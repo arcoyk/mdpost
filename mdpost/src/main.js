@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import M from 'materialize-css'
 import _ from 'lodash'
+import VueMarkDown from 'vue-markdown'
+
 require('../node_modules/materialize-css/dist/css/materialize.min.css')
 require('../node_modules/material-icons/iconfont/material-icons.css')
 

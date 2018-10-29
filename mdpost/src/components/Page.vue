@@ -1,18 +1,18 @@
 <template>
-  <div class="row">
-    <div class="col s11">
+  <div>
+    <div>
       <span v-if="editmode">
         <textarea v-model=page.title>{{ page.title }}</textarea>
         <p>{{ page.updated_at }}</p>
-        <textarea v-model=page.content></textarea>
+        <textarea style="height: 1000px" v-model=page.content></textarea>
       </span>
       <span v-else>
         <h3>{{ page.title }}</h3>
         <p>{{ page.updated_at }}</p>
-        <p class="content">{{ page.content }}</p>
+        <p class="content"></p>
       </span>
     </div>
-    <div class="col s1">
+    <div class="controler">
       <a v-if="newpage" class="btn-floating btn-flat blue" v-on:click="postPage()">
         <i class="material-icons">save</i>
       </a>
@@ -29,6 +29,7 @@
 <script>
 import axios from 'axios'
 import * as api from '../js/api'
+import markdown from 'markdown'
 
 export default {
   name: 'Page',
@@ -44,12 +45,17 @@ export default {
         this.loadPage()
       }
     },
+    initContent: function() {
+      let c = document.querySelector('.content')
+      c.innerHTML = markdown.markdown.toHTML(this.page.content)
+    },
     loadPage: function() {
       let vm = this
       axios.get(api.s + 'pages/' + vm.$route.params.id, {
       })
       .then(function (res) {
         vm.page = res.data
+        vm.initContent()
       })
       .catch(function (e) {
       })
@@ -65,6 +71,7 @@ export default {
         vm.page = res.data
         vm.newpage = false
         vm.editmode = false
+        setTimeout(vm.initContent, 1)
       })
       .catch(function (e) {
       })
@@ -77,8 +84,8 @@ export default {
       })
       .then(function (res) {
         vm.page = res.data
-        console.log(res.data)
         vm.editmode = false
+        setTimeout(vm.initContent, 1)
       })
       .catch(function (e) {
       })
@@ -106,6 +113,14 @@ export default {
 <style>
 .content {
   font-size: 18px;
+}
+img {
+  width: 100%;
+}
+.controler {
+  position: fixed;
+  right: 20%;
+  bottom: 10%;
 }
 </style>
 
