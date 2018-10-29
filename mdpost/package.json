@@ -17,6 +17,8 @@
     "material-icons": "^0.2.3",
     "materialize-css": "^1.0.0",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.16.0",
+    "vue-headful": "^2.0.1",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1"
   },

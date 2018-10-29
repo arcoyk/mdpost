@@ -21,6 +21,7 @@
       <a v-else class="btn-floating btn-flat blue" v-on:click="editPage()">
         <i class="material-icons">save</i>
       </a>
+      <vue-headful :title="'mdpost ' + page.title"/>
     </div>
   </div>
 </template>
@@ -29,9 +30,13 @@
 import axios from 'axios'
 import * as api from '../js/api'
 import markdown from 'markdown'
+import vueHeadful from 'vue-headful'
 
 export default {
   name: 'Page',
+  components: {
+    vueHeadful
+  },
   mounted: function() {
     this.initPage()
   },

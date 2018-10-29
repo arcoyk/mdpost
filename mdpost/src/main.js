@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import M from 'materialize-css'
 import _ from 'lodash'
-import VueMarkDown from 'vue-markdown'
+import VueAnalytics from 'vue-analytics' 
 
 require('../node_modules/materialize-css/dist/css/materialize.min.css')
 require('../node_modules/material-icons/iconfont/material-icons.css')
@@ -19,3 +19,9 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+Vue.use(VueAnalytics, {
+  id: 'UA-128284908-1',
+  router
+})
+
