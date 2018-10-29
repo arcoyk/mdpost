@@ -3,7 +3,8 @@
     <textarea v-model=page.title>{{ page.title }}</textarea>
     <p>{{ page.updated_at }}</p>
     <textarea v-model=page.content></textarea>
-    <button v-on:click="editPage()">save</button>
+    <button v-if="newpage" v-on:click="postPage()">post</button>
+    <button v-else v-on:click="editPage()">save</button>
   </div>
 </template>
 
@@ -12,9 +13,16 @@ import axios from 'axios'
 export default {
   name: 'Page',
   mounted: function() {
-    this.loadPage()
+    this.initPage()
   },
   methods: {
+    initPage: function() {
+      if (this.$route.params.id == "new") {
+        this.newpage = true
+      } else {
+        this.loadPage()
+      }
+    },
     loadPage: function() {
       let vm = this
       axios.get('http://localhost:3000/pages/' + vm.$route.params.id, {
@@ -28,11 +36,13 @@ export default {
     postPage: function() {
       let vm = this
       axios.post('http://localhost:3000/pages', {
-        title: 'This is ' + Math.random() * 10,
-        content: 'Oh this is new...'
+        title: vm.page.title,
+        content: vm.page.content
       })
       .then(function (res) {
-        console.log(res)
+        vm.$router.push('' + res.data.id)
+        vm.page = res.data
+        vm.newpage = false
       })
       .catch(function (e) {
       })
@@ -62,7 +72,8 @@ export default {
   },
   data () {
     return {
-      page: {}
+      page: {'title': '', 'content': ''},
+      newpage: false
     }
   }
 }

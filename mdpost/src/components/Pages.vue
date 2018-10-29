@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="page in pages" :key="page.id">
-      <a :href="'/#/page/' + page.id">{{ page.title }}</a>
+      <a :href="'/page/' + page.id">{{ page.title }}</a>
     </div>
   </div>
 </template>
