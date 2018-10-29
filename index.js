@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var serveStatic = require('serve-static');
 app = express();
+var history = require('connect-history-api-fallback');
 app.use(serveStatic(__dirname + "/mdpost/dist"));
 console.log(__dirname);
 var port = process.env.PORT || 5000;
