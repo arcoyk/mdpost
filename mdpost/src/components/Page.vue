@@ -10,6 +10,8 @@
 
 <script>
 import axios from 'axios'
+import * as api from '../js/api'
+
 export default {
   name: 'Page',
   mounted: function() {
@@ -25,7 +27,7 @@ export default {
     },
     loadPage: function() {
       let vm = this
-      axios.get('http://localhost:3000/pages/' + vm.$route.params.id, {
+      axios.get(api.s + 'pages/' + vm.$route.params.id, {
       })
       .then(function (res) {
         vm.page = res.data
@@ -35,7 +37,7 @@ export default {
     },
     postPage: function() {
       let vm = this
-      axios.post('http://localhost:3000/pages', {
+      axios.post(api.s + 'pages', {
         title: vm.page.title,
         content: vm.page.content
       })
@@ -49,7 +51,7 @@ export default {
     },
     editPage: function() {
       let vm = this
-      axios.put('http://localhost:3000/pages/' + vm.page.id, {
+      axios.put(api.s + 'pages/' + vm.page.id, {
         title: vm.page.title,
         content: vm.page.content
       })
@@ -61,7 +63,7 @@ export default {
     },
     deletePage: function() {
       let vm = this
-      axios.delete('http://localhost:3000/pages/3', {
+      axios.delete(api.s + 'pages/' + vm.page.id, {
       })
       .then(function (res) {
         console.log(res)

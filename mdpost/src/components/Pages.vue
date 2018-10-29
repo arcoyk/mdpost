@@ -9,6 +9,7 @@
 <script>
 import axios from 'axios'
 import page from './Page'
+import * as api from '../js/api'
 
 export default {
   name: 'Pages',
@@ -21,7 +22,7 @@ export default {
   methods: {
     newPage: function() {
       let vm = this
-      axios.get('http://localhost:3000/pages/new', {
+      axios.get(api.s + '/new', {
       })
       .then(function(res) {
         console.log(res)
@@ -31,7 +32,7 @@ export default {
     },
     loadPages: function() {
       let vm = this
-      axios.get('http://localhost:3000/pages', {
+      axios.get(api.s + 'pages', {
       })
       .then(function(res) {
         vm.pages = res.data
