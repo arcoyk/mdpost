@@ -1,7 +1,18 @@
 <template>
   <div>
-    <div v-for="page in pages" :key="page.id">
-      <a v-bind:href="'/page/' + page.id">{{ page.title }}</a>
+    <div class="row" v-for="page in pages" :key="page.id">
+      <div class="container" v-bind:href="'/page/' + page.id">
+        <div class="row"> 
+          <a class="black-text" v-bind:href="'/page/' + page.id"> 
+            <h6>
+              <b>
+                {{ page.title }}
+              </b>
+            </h6>
+          </a>
+          {{ page.updated_at.split('T11')[0] }}
+        </div>
+      </div>
     </div>
   </div>
 </template>

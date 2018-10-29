@@ -1,18 +1,28 @@
 <template>
-  <div>
-    <span v-if="editmode">
-      <textarea v-model=page.title>{{ page.title }}</textarea>
-      <p>{{ page.updated_at }}</p>
-      <textarea v-model=page.content></textarea>
-      <button v-if="newpage" v-on:click="postPage()">post</button>
-      <button v-else v-on:click="editPage()">save</button>
-    </span>
-    <span v-else>
-      <p v-model=page.title>{{ page.title }}</p>
-      <p>{{ page.updated_at }}</p>
-      <p v-model=page.content></p>
-      <button v-on:click="toggleMode()">edit</button>
-    </span>
+  <div class="row">
+    <div class="col s11">
+      <span v-if="editmode">
+        <textarea v-model=page.title>{{ page.title }}</textarea>
+        <p>{{ page.updated_at }}</p>
+        <textarea v-model=page.content></textarea>
+      </span>
+      <span v-else>
+        <h3>{{ page.title }}</h3>
+        <p>{{ page.updated_at }}</p>
+        <p class="content">{{ page.content }}</p>
+      </span>
+    </div>
+    <div class="col s1">
+      <a v-if="newpage" class="btn-floating btn-flat blue" v-on:click="postPage()">
+        <i class="material-icons">save</i>
+      </a>
+      <a v-else-if="editmode == false" class="btn-floating btn-flat blue" v-on:click="editmode = true">
+        <i class="material-icons">edit</i>
+      </a>
+      <a v-else class="btn-floating btn-flat blue" v-on:click="editPage()">
+        <i class="material-icons">save</i>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -29,12 +39,10 @@ export default {
     initPage: function() {
       if (this.$route.params.id == "new") {
         this.newpage = true
+        this.editmode = true
       } else {
         this.loadPage()
       }
-    },
-    toggleMode: function() {
-      this.editmode = !this.editmode
     },
     loadPage: function() {
       let vm = this
@@ -56,6 +64,7 @@ export default {
         vm.$router.push('' + res.data.id)
         vm.page = res.data
         vm.newpage = false
+        vm.editmode = false
       })
       .catch(function (e) {
       })
@@ -68,6 +77,8 @@ export default {
       })
       .then(function (res) {
         vm.page = res.data
+        console.log(res.data)
+        vm.editmode = false
       })
       .catch(function (e) {
       })
@@ -92,4 +103,9 @@ export default {
   }
 }
 </script>
+<style>
+.content {
+  font-size: 18px;
+}
+</style>
 
