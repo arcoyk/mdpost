@@ -1,10 +1,18 @@
 <template>
   <div>
-    <textarea v-model=page.title>{{ page.title }}</textarea>
-    <p>{{ page.updated_at }}</p>
-    <textarea v-model=page.content></textarea>
-    <button v-if="newpage" v-on:click="postPage()">post</button>
-    <button v-else v-on:click="editPage()">save</button>
+    <span v-if="editmode">
+      <textarea v-model=page.title>{{ page.title }}</textarea>
+      <p>{{ page.updated_at }}</p>
+      <textarea v-model=page.content></textarea>
+      <button v-if="newpage" v-on:click="postPage()">post</button>
+      <button v-else v-on:click="editPage()">save</button>
+    </span>
+    <span v-else>
+      <p v-model=page.title>{{ page.title }}</p>
+      <p>{{ page.updated_at }}</p>
+      <p v-model=page.content></p>
+      <button v-on:click="toggleMode()">edit</button>
+    </span>
   </div>
 </template>
 
@@ -24,6 +32,9 @@ export default {
       } else {
         this.loadPage()
       }
+    },
+    toggleMode: function() {
+      this.editmode = !this.editmode
     },
     loadPage: function() {
       let vm = this
@@ -75,7 +86,8 @@ export default {
   data () {
     return {
       page: {'title': '', 'content': ''},
-      newpage: false
+      newpage: false,
+      editmode: false
     }
   }
 }
