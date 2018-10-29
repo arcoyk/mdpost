@@ -2,9 +2,8 @@
   <div>
     <div>
       <span v-if="editmode">
-        <textarea v-model=page.title>{{ page.title }}</textarea>
-        <p>{{ page.updated_at }}</p>
-        <textarea style="height: 1000px" v-model=page.content></textarea>
+        <textarea autofocus placeholder="title" v-model=page.title>{{ page.title }}</textarea>
+        <textarea placeholder="markdown available" style="height: 1000px" v-model=page.content></textarea>
       </span>
       <span v-else>
         <h3>{{ page.title }}</h3>
@@ -119,8 +118,15 @@ img {
 }
 .controler {
   position: fixed;
-  right: 20%;
-  bottom: 10%;
+  right: 15%;
+  top: 10%;
+}
+textarea {
+  min-height: 80px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 20px;
 }
 </style>
 

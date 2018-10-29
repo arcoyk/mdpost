@@ -1,24 +1,28 @@
 <template>
-  <div id="app" class="row grey">
-    <div class="col row s12 pink">
-      <div class="headtile col s4 blue">
-        <a href="/" class="grey-text">
-            <div class="mdpost">mdpost</div>
+  <div id="app" class="row">
+    <div class="col row s12">
+      <div class="headtile col s4">
+        <a href="/" class="black-text">
+          <div class="mdpost">mdpost</div>
         </a>
       </div>
       <div class="headtile col s4">
       </div>
-      <div class="headtile col s4 yellow">
-        <a href="/page/new">New Page</a>
+      <div class="headtile col s4">
       </div>
     </div>
-    <div class="col s3 red ">
+    <div class="col s3">
     </div>
-    <div class="col s6 orange">
+    <div class="col s6">
       <router-view/>
     </div>
-    <div class="col s3 yellow">
+    <div class="col s3">
     </div>
+    <div class="footer col row s12">
+    </div>
+    <a class="add btn-floating blue btn-flat" href="/page/new">
+      <i class="material-icons">add</i>
+    </a>
   </div>
 </template>
 
@@ -31,9 +35,18 @@ export default {
 <style scoped>
 .headtile {
   text-align: center;
-  height: 50px;
+  padding: 10px 0px;
 }
 .mdpost {
-  font-size: 40px;
+  font-size: 27px;
+}
+.footer {
+  height: 200px;
+}
+.add {
+  position: fixed;
+  right: 10%;
+  top: 10%;
 }
 </style>
+
