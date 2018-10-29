@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="page in pages" :key="page.id">
-      <a :href="'/page/' + page.id">{{ page.title }}</a>
+      <a v-bind:href="'/page/' + page.id">{{ page.title }}</a>
     </div>
   </div>
 </template>
@@ -17,7 +17,6 @@ export default {
   },
   mounted: function() {
     this.loadPages()
-    this.newPage()
   },
   methods: {
     newPage: function() {
