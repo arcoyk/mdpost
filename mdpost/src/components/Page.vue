@@ -7,7 +7,7 @@
       </span>
       <span v-else>
         <h3>{{ page.title }}</h3>
-        <p>{{ page.updated_at }}</p>
+        <p>{{ ("" + page.updated_at).split('T')[0] }}</p>
         <p class="content"></p>
       </span>
     </div>

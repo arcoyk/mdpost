@@ -10,7 +10,7 @@
               </b>
             </h6>
           </a>
-          {{ page.updated_at.split('T')[0] }}
+          {{ ("" + page.updated_at).split('T')[0] }}
         </div>
       </div>
     </div>

@@ -11,12 +11,12 @@
       <div class="headtile col s4">
       </div>
     </div>
-    <div class="col s3">
+    <div class="col s2">
     </div>
-    <div class="col s6">
+    <div class="col s8">
       <router-view/>
     </div>
-    <div class="col s3">
+    <div class="col s2">
     </div>
     <div class="footer col row s12">
       <a class="grey-text" href="https://mdpost2.herokuapp.com/page/18">what's mdpost</a>
