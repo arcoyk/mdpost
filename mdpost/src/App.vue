@@ -19,6 +19,7 @@
     <div class="col s3">
     </div>
     <div class="footer col row s12">
+      <a class="grey-text" href="https://mdpost2.herokuapp.com/page/18">what's mdpost</a>
     </div>
     <a class="add btn-floating blue btn-flat" href="/page/new">
       <i class="material-icons">add</i>
@@ -41,7 +42,8 @@ export default {
   font-size: 27px;
 }
 .footer {
-  height: 200px;
+  margin-top: 100px;
+  text-align: center;
 }
 .add {
   position: fixed;

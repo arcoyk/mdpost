@@ -10,7 +10,7 @@
               </b>
             </h6>
           </a>
-          {{ page.updated_at.split('T11')[0] }}
+          {{ page.updated_at.split('T')[0] }}
         </div>
       </div>
     </div>
@@ -36,7 +36,6 @@ export default {
       axios.get(api.s + '/new', {
       })
       .then(function(res) {
-        console.log(res)
       })
       .catch(function(e) {
       })
