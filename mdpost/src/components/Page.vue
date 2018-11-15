@@ -6,8 +6,10 @@
         <textarea placeholder="markdown available" style="height: 1000px" v-model=page.content></textarea>
       </span>
       <span v-else>
-        <h3>{{ page.title }}</h3>
-        <p>{{ ("" + page.updated_at).split('T')[0] }}</p>
+        <div class="top">
+          <h2>{{ page.title }}</h2>
+          <p>{{ ("" + page.updated_at).split('T')[0] }}</p>
+        </div>
         <p class="content"></p>
       </span>
     </div>
@@ -132,6 +134,12 @@ textarea {
   outline: none;
   resize: none;
   font-size: 20px;
+}
+.top {
+  margin: 50px 0px;
+}
+h2 {
+  font-weight: bold;
 }
 </style>
 
