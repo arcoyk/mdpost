@@ -139,7 +139,7 @@ textarea {
   border: none;
   outline: none;
   resize: none;
-  font-size: 20px !important;
+  font-size: 20px;
 }
 .top {
   margin: 50px 0px;
