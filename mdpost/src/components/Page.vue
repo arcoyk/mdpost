@@ -133,7 +133,7 @@ textarea {
   border: none;
   outline: none;
   resize: none;
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .top {
   margin: 50px 0px;
