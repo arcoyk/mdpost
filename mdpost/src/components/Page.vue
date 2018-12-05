@@ -2,7 +2,6 @@
   <div>
     <div>
       <span v-if="editmode">
-        <speech v-if="0" v-on:c_finalim="speechInput"></speech>
         <textarea autofocus placeholder="title" v-model=page.title>{{ page.title }}</textarea>
         <textarea placeholder="markdown available" style="height: 1000px" v-model=page.content></textarea>
       </span>
@@ -34,12 +33,10 @@ import axios from 'axios'
 import * as api from '../js/api'
 import markdown from 'markdown'
 import vueHeadful from 'vue-headful'
-import speech from './speech'
 
 export default {
   name: 'Page',
   components: {
-    speech,
     vueHeadful
   },
   mounted: function() {
@@ -108,9 +105,6 @@ export default {
       })
       .catch(function (e) {
       })
-    },
-    speechInput: function(t) {
-      this.page.content += t
     }
   },
   data () {
